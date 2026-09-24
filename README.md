@@ -1,6 +1,6 @@
 # TaskEntity-Service Application
 
-A RESTful To-Do management backend application built using **Java**, **Spring MVC**, **Spring Data JPA**, and **MariaDB**. The application provides complete **CRUD** (Create, Read, Update, Delete) functionality for task management and is fully tested using **Postman**.
+A RESTful Task management backend application built using **Java**, **Spring MVC**, **Spring Data JPA**, and **MariaDB**. The application provides complete **CRUD** (Create, Read, Update, Delete) functionality for task management and is fully tested using **Postman**.
 
 ---
 
