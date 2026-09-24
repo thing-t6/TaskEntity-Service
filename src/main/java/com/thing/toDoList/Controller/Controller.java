@@ -54,4 +54,13 @@ public class Controller {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteTask(@RequestParam Long id){
+        boolean deletedTask = taskService.deleteTask(id);
+        if(deletedTask){
+            return ResponseEntity.ok("Deleted");
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
