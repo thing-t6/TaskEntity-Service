@@ -1,4 +1,4 @@
-package com.thing.toDoList.Tasks;
+package com.thing.TaskEntity.Tasks;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

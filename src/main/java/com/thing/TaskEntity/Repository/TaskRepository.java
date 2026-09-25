@@ -1,6 +1,6 @@
-package com.thing.toDoList.Repository;
+package com.thing.TaskEntity.Repository;
 
-import com.thing.toDoList.Tasks.Task;
+import com.thing.TaskEntity.Tasks.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

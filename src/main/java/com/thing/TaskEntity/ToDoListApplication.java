@@ -1,4 +1,4 @@
-package com.thing.toDoList;
+package com.thing.TaskEntity;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

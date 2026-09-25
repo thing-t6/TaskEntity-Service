@@ -1,7 +1,7 @@
-package com.thing.toDoList.Service;
+package com.thing.TaskEntity.Service;
 
-import com.thing.toDoList.Repository.TaskRepository;
-import com.thing.toDoList.Tasks.Task;
+import com.thing.TaskEntity.Repository.TaskRepository;
+import com.thing.TaskEntity.Tasks.Task;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -57,6 +57,17 @@ public class TaskService {
             return false;
         }
         taskRepository.deleteById(id);
+        return true;
+    }
+
+    public boolean markTaskDone(Long id){
+        Optional<Task> reveivedVal = taskRepository.findById(id);
+        if(reveivedVal.isEmpty()){
+            return false;
+        }
+        Task changeTaskCompletion = reveivedVal.get();
+        changeTaskCompletion.setCompleted(true);
+        taskRepository.save(changeTaskCompletion);
         return true;
     }
 

@@ -1,7 +1,7 @@
-package com.thing.toDoList.Controller;
+package com.thing.TaskEntity.Controller;
 
-import com.thing.toDoList.Service.TaskService;
-import com.thing.toDoList.Tasks.Task;
+import com.thing.TaskEntity.Service.TaskService;
+import com.thing.TaskEntity.Tasks.Task;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -60,6 +60,16 @@ public class Controller {
         boolean deletedTask = taskService.deleteTask(id);
         if(deletedTask){
             return ResponseEntity.ok("Deleted");
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @PatchMapping("/markdone")
+    public ResponseEntity<String> markTaskDone(@RequestParam Long id){
+        boolean valResp = taskService.markTaskDone(id);
+        System.out.println(valResp);
+        if(valResp){
+            return ResponseEntity.ok("Marked done");
         }
         return ResponseEntity.notFound().build();
     }
