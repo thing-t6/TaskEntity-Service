@@ -7,7 +7,7 @@ A RESTful Task management backend application built using **Java**, **Spring MVC
 ## Features
 
 - **Create**: Add new tasks with title, description, and status.
-- **Read**: Fetch a list of all tasks or query a specific task by ID.
+- **Read**: Fetch a list of all tasks or query a specific task by ID or get completed / pending tasks.
 - **Update**: Modify task details or update completion status.
 - **Delete**: Remove tasks from the database by ID.
 - **Persistence**: Relational data storage backed by MariaDB using Spring Data JPA / Hibernate.
