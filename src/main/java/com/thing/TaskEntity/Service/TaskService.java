@@ -37,6 +37,16 @@ public class TaskService {
         return taskResp;
     }
 
+    public List<Task> showCompletedTask(){
+        List<Task> taskResp = taskRepository.findByIsCompletedTrue();
+        return taskResp;
+    }
+
+    public List<Task> showPendingTask(){
+        List<Task> taskResp = taskRepository.findByIsCompletedFalse();
+        return taskResp;
+    }
+
     public boolean modifyTask(Long id,Task task){
         Optional<Task> receivedVal = taskRepository.findById(id);
 

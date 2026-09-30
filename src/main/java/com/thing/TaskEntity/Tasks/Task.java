@@ -14,6 +14,7 @@ public class Task {
 
     private String taskName;
     private String date;
+    private String description;
     private Boolean isCompleted;
 
     public Long getId() {
@@ -46,5 +47,13 @@ public class Task {
 
     public void setCompleted(Boolean completed) {
         isCompleted = completed;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

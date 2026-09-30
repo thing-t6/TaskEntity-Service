@@ -36,7 +36,7 @@ public class Controller {
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Task>> getTask(){
+    public ResponseEntity<List<Task>> geAlltTask(){
         List<Task> receivedALlTask = taskService.getAllTask();
 
         if(receivedALlTask.isEmpty()){
@@ -44,6 +44,28 @@ public class Controller {
         }
 
         return ResponseEntity.status(HttpStatus.OK).body(receivedALlTask);
+    }
+
+    @GetMapping("/showCompletedTask")
+    public ResponseEntity<List<Task>> getCompletedTask(){
+        List<Task> receivedCompletedTask = taskService.showCompletedTask();
+
+        if(receivedCompletedTask.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(receivedCompletedTask);
+    }
+
+    @GetMapping("/showPendingTask")
+    public ResponseEntity<List<Task>> getPendingTask(){
+        List<Task> receivedPendingTask = taskService.showPendingTask();
+
+        if(receivedPendingTask.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(receivedPendingTask);
     }
 
     @PutMapping("/modify")
