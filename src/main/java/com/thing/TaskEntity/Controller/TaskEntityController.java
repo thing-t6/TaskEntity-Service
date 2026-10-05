@@ -2,6 +2,8 @@ package com.thing.TaskEntity.Controller;
 
 import com.thing.TaskEntity.Service.TaskService;
 import com.thing.TaskEntity.Tasks.Task;
+import com.thing.TaskEntity.dto.TaskRequestDTO;
+import com.thing.TaskEntity.dto.TaskResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,22 +12,22 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tasks")
-public class Controller {
+public class TaskEntityController {
 
     private TaskService taskService;
 
-    public Controller(TaskService taskService){
+    public TaskEntityController(TaskService taskService){
         this.taskService = taskService;
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<Task> createTask(@RequestBody Task task){
-        Task receivedAllTask = taskService.createTask(task);
-        return ResponseEntity.status(HttpStatus.CREATED).body(receivedAllTask);
+    @PostMapping
+    public ResponseEntity<TaskResponseDTO> createTask(@RequestBody TaskRequestDTO requestDTO){
+        TaskResponseDTO responseDTO = taskService.createTask(requestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
     }
 
-    @GetMapping("/get")
-    public ResponseEntity<Task> getTask(@RequestParam Long id){
+    @GetMapping("{id}")
+    public ResponseEntity<Task> getTask(@PathVariable Long id){
         Task createdTask = taskService.getTask(id);
 
         if(createdTask == null){
@@ -35,7 +37,7 @@ public class Controller {
         return ResponseEntity.status(HttpStatus.OK).body(createdTask);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping
     public ResponseEntity<List<Task>> geAlltTask(){
         List<Task> receivedALlTask = taskService.getAllTask();
 
@@ -68,7 +70,7 @@ public class Controller {
         return ResponseEntity.status(HttpStatus.OK).body(receivedPendingTask);
     }
 
-    @PutMapping("/modify")
+    @PutMapping
     public ResponseEntity<String> modifyTask(@RequestParam Long id, @RequestBody Task task){
         boolean modifiedTask = taskService.modifyTask(id,task);
         if(modifiedTask){
@@ -77,7 +79,7 @@ public class Controller {
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping
     public ResponseEntity<String> deleteTask(@RequestParam Long id){
         boolean deletedTask = taskService.deleteTask(id);
         if(deletedTask){
@@ -86,7 +88,7 @@ public class Controller {
         return ResponseEntity.notFound().build();
     }
 
-    @PatchMapping("/markdone")
+    @PatchMapping
     public ResponseEntity<String> markTaskDone(@RequestParam Long id){
         boolean valResp = taskService.markTaskDone(id);
         System.out.println(valResp);

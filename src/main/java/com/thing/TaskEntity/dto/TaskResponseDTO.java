@@ -1,33 +1,13 @@
-package com.thing.TaskEntity.Tasks;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+package com.thing.TaskEntity.dto;
 
 import java.time.LocalDateTime;
 
-@Entity
-public class Task {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class TaskResponseDTO {
     private String taskName;
     private LocalDateTime date;
     private String description;
     private Boolean isCompleted;
-    private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTaskName() {
         return taskName;
@@ -45,14 +25,6 @@ public class Task {
         this.date = date;
     }
 
-    public Boolean getCompleted() {
-        return isCompleted;
-    }
-
-    public void setCompleted(Boolean completed) {
-        isCompleted = completed;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -61,12 +33,12 @@ public class Task {
         this.description = description;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public Boolean getCompleted() {
+        return isCompleted;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setCompleted(Boolean completed) {
+        isCompleted = completed;
     }
 
     public LocalDateTime getUpdatedAt() {

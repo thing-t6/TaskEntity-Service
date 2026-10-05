@@ -2,6 +2,9 @@ package com.thing.TaskEntity.Service;
 
 import com.thing.TaskEntity.Repository.TaskRepository;
 import com.thing.TaskEntity.Tasks.Task;
+import com.thing.TaskEntity.dto.TaskRequestDTO;
+import com.thing.TaskEntity.dto.TaskResponseDTO;
+import com.thing.TaskEntity.mapper.Mapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,10 +20,9 @@ public class TaskService {
 
     }
 
-    public Task createTask(Task task){
-        task.setCompleted(false);
-        Task taskResp = taskRepository.save(task);
-        return taskResp;
+    public TaskResponseDTO createTask(TaskRequestDTO tasksRequest){
+        return Mapper.mapToDTO(taskRepository
+                .save(Mapper.maptoEntity(tasksRequest)));
     }
 
     public Task getTask(Long id){
