@@ -6,6 +6,9 @@ import com.thing.TaskEntity.dto.TaskResponseDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Mapper {
     public static Task maptoEntity(TaskRequestDTO taskRequestDTO){
@@ -29,6 +32,14 @@ public class Mapper {
         responseDTO.setUpdatedAt(task.getUpdatedAt());
 
         return responseDTO;
+    }
 
+    public static List<TaskResponseDTO> mapToListDTO(List<Task> tasks){
+        if(tasks == null){
+            return Collections.emptyList();
+        }
+        return tasks.stream()
+                .map(Mapper::mapToDTO)
+                .toList();
     }
 }

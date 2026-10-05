@@ -27,19 +27,19 @@ public class TaskEntityController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Task> getTask(@PathVariable Long id){
-        Task createdTask = taskService.getTask(id);
+    public ResponseEntity<TaskResponseDTO> getTask(@PathVariable Long id){
+        TaskResponseDTO responseDTO = taskService.getTask(id);
 
-        if(createdTask == null){
+        if(responseDTO == null){
             return ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.status(HttpStatus.OK).body(createdTask);
+        return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
     }
 
     @GetMapping
-    public ResponseEntity<List<Task>> geAlltTask(){
-        List<Task> receivedALlTask = taskService.getAllTask();
+    public ResponseEntity<List<TaskResponseDTO>> geAlltTask(){
+        List<TaskResponseDTO> receivedALlTask = taskService.getAllTask();
 
         if(receivedALlTask.isEmpty()){
             return ResponseEntity.notFound().build();
@@ -49,8 +49,8 @@ public class TaskEntityController {
     }
 
     @GetMapping("/showCompletedTask")
-    public ResponseEntity<List<Task>> getCompletedTask(){
-        List<Task> receivedCompletedTask = taskService.showCompletedTask();
+    public ResponseEntity<List<TaskResponseDTO>> getCompletedTask(){
+        List<TaskResponseDTO> receivedCompletedTask = taskService.showCompletedTask();
 
         if(receivedCompletedTask.isEmpty()){
             return ResponseEntity.notFound().build();
@@ -60,8 +60,8 @@ public class TaskEntityController {
     }
 
     @GetMapping("/showPendingTask")
-    public ResponseEntity<List<Task>> getPendingTask(){
-        List<Task> receivedPendingTask = taskService.showPendingTask();
+    public ResponseEntity<List<TaskResponseDTO>> getPendingTask(){
+        List<TaskResponseDTO> receivedPendingTask = taskService.showPendingTask();
 
         if(receivedPendingTask.isEmpty()){
             return ResponseEntity.notFound().build();
@@ -71,8 +71,8 @@ public class TaskEntityController {
     }
 
     @PutMapping
-    public ResponseEntity<String> modifyTask(@RequestParam Long id, @RequestBody Task task){
-        boolean modifiedTask = taskService.modifyTask(id,task);
+    public ResponseEntity<String> modifyTask(@RequestParam Long id, @RequestBody TaskRequestDTO requestDTO){
+        boolean modifiedTask = taskService.modifyTask(id,requestDTO);
         if(modifiedTask){
             return ResponseEntity.ok("Modified");
         }
