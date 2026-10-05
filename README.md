@@ -1,24 +1,24 @@
 # TaskEntity-Service Application
 
-A RESTful Task management backend application built using **Java**, **Spring MVC**, **Spring Data JPA**, and **MariaDB**. The application provides complete **CRUD** (Create, Read, Update, Delete) functionality for task management and is fully tested using **Postman**.
+A RESTful production-ready Task management backend application built using **Java**, **Spring MVC**, **Spring Data JPA**, and **MariaDB**.This application provides full CRUD functionality, custom data transfer objects (DTOs), request payload validations, centralized global exception handling, data masking, and persistence using Spring Data JPA.
 
 ---
 
 ## Features
 
-- **Create**: Add new tasks with title, description, and status.
-- **Read**: Fetch a list of all tasks or query a specific task by ID or get completed / pending tasks.
-- **Update**: Modify task details or update completion status.
-- **Delete**: Remove tasks from the database by ID.
-- **Persistence**: Relational data storage backed by MariaDB using Spring Data JPA / Hibernate.
+- **Full Lifecycle CRUD**: Complete RESTful endpoints to create, retrieve, update, and delete tasks.
+- **Persistence**: Relational database abstraction backed by MariaDB, utilizing custom query methods.
+- **RESTful Status Codes**: Accurate HTTP status responses (201 Created for additions, 204 No Content for deletions, 404 Not Found for missing resources).
+- **Automated Payload Validation**: Enforces strict field constraints (such as non-blank task names and valid date formats) using @Valid at the controller layer.
+- **Centralized Exception Handling**: @RestControllerAdvice intercepts uncaught runtime errors (ResourceNotFoundException, MethodArgumentNotValidException) globally.
 
 ---
 
 ## Tech Stack
 
 - **Language:** Java 17+
-- **Framework:** Spring Boot (Spring MVC, Spring Data JPA)
-- **Database:** MariaDB
+- **Framework:** Spring Boot (Spring MVC, Spring Data JPA, Spring Validation)
+- **Database:** MariaDB / MySQL
 - **Build Tool:** Maven
 - **API Testing:** Postman
 
@@ -35,11 +35,4 @@ Before running this application, ensure you have the following installed:
 
 ---
 
-## Getting Started
 
-### 1. Database Setup
-
-Open your MariaDB terminal or GUI tool (e.g., DBeaver, HeidiSQL) and create a database:
-
-```sql
-CREATE DATABASE todo_db;
